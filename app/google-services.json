@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "664341287277",
+    "project_id": "baatcheet-e1d62",
+    "storage_bucket": "baatcheet-e1d62.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664341287277:android:1decdb2ec5be915a7dca64",
+        "android_client_info": {
+          "package_name": "com.test.baatcheet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa27LqrusNBfovwWlMVrNuclkDpT41xRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
