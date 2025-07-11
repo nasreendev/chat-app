@@ -5,7 +5,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.test.baatcheet.presentation.auth.AuthScreen
+import com.test.baatcheet.presentation.chat.ChatScreen
 import com.test.baatcheet.presentation.home.HomeScreen
+import com.test.baatcheet.presentation.main.MainScreen
+import com.test.baatcheet.presentation.profile.ProfileScreen
 
 @Composable
 fun AppNavigation() {
@@ -18,17 +21,32 @@ fun AppNavigation() {
         composable<Routes.AuthScreen> {
             AuthScreen(
                 navToHome = {
-                    navController.navigate(Routes.HomeScreen)
+                    navController.navigate(Routes.MainScreen)
                 }
             )
+        }
+        composable<Routes.MainScreen> {
+            MainScreen(
+                popBackStack = {
+                    navController.popBackStack()
+                },
+                navToChat = {
+                    navController.navigate(Routes.ChatScreen)
+                }
+            )
+        }
+        composable<Routes.ChatScreen> {
+            ChatScreen()
         }
         composable<Routes.HomeScreen> {
             HomeScreen(
                 popBackStack = {
                     navController.popBackStack()
+                },
+                navToChat = {
+                    navController.navigate(Routes.ChatScreen)
                 }
             )
         }
     }
-
 }

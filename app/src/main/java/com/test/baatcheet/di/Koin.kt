@@ -1,11 +1,14 @@
 package com.test.baatcheet.di
 
 import com.test.baatcheet.data.repository.AuthRepositoryImpl
+import com.test.baatcheet.data.repository.UserRepositoryImpl
+import com.test.baatcheet.data.usecases.GetAllUsersUseCase
 import com.test.baatcheet.data.usecases.IsUserLoggedInUseCase
 import com.test.baatcheet.data.usecases.SignInUseCase
 import com.test.baatcheet.data.usecases.SignOutUseCase
 import com.test.baatcheet.data.usecases.SignUpUseCase
 import com.test.baatcheet.domain.repository.AuthRepository
+import com.test.baatcheet.domain.repository.UserRepository
 import com.test.baatcheet.presentation.auth.AuthViewModel
 import com.test.baatcheet.presentation.home.HomeViewModel
 import org.koin.core.module.dsl.bind
@@ -19,7 +22,9 @@ val appModule = module {
     singleOf(::AuthRepositoryImpl) {
         bind<AuthRepository>()
     }
-
+    singleOf(::UserRepositoryImpl) {
+        bind<UserRepository>()
+    }
     singleOf(::IsUserLoggedInUseCase)
 
     singleOf(::SignUpUseCase)
@@ -27,7 +32,7 @@ val appModule = module {
     singleOf(::SignInUseCase)
 
     singleOf(::SignOutUseCase)
-
+    singleOf(::GetAllUsersUseCase)
     viewModelOf(::AuthViewModel)
 
     viewModelOf(::HomeViewModel)

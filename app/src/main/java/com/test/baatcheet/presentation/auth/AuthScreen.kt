@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.test.baatcheet.core.LoadingBox
 import com.test.baatcheet.core.VerticalSpace
+import com.test.baatcheet.core.getValidationError
 import com.test.baatcheet.data.network.NetworkResponse
 import com.test.baatcheet.presentation.auth.event.AuthEvent
 import com.test.baatcheet.presentation.auth.event.AuthType
@@ -52,7 +53,6 @@ fun AuthScreen(
             }
         }
     }
-
 
     if (state.signInResponse is NetworkResponse.Loading || state.signUpResponse is NetworkResponse.Loading) {
         LoadingBox()
@@ -123,9 +123,14 @@ fun AuthScreen(
 
             Button(
                 onClick = {
-                    when (state.authType) {
-                        AuthType.SIGN_IN -> viewModel.signIn()
-                        AuthType.SIGN_UP -> viewModel.signUp()
+                    val error = getValidationError(state.email, state.password)
+                    if (error == null) {
+                        when (state.authType) {
+                            AuthType.SIGN_IN -> viewModel.signIn()
+                            AuthType.SIGN_UP -> viewModel.signUp()
+                        }
+                    } else {
+                        Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
                     }
                 },
                 modifier = Modifier

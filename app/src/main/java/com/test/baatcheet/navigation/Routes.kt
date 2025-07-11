@@ -11,4 +11,15 @@ sealed class Routes {
     @Serializable
     data object AuthScreen : Routes()
 
+    @Serializable
+    data object ProfileScreen : Routes()
+
+    @Serializable
+    data object ChatScreen : Routes()
+
+
+    @Serializable
+    data object MainScreen : Routes()
+
+
 }

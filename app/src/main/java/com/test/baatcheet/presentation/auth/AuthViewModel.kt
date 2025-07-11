@@ -90,7 +90,7 @@ class AuthViewModel(
 
                 }
 
-                is NetworkResponse.Success<*> -> {
+                is NetworkResponse.Success -> {
                     _event.send(AuthEvent.ShowToast("Sign in Success"))
                     _event.send(AuthEvent.NavToHome)
                 }
@@ -111,7 +111,8 @@ class AuthViewModel(
             }
             val response = signUpUseCase.invoke(
                 email = _state.value.email,
-                password = _state.value.password
+                password = _state.value.password,
+                name = _state.value.name
             )
             _state.update {
                 it.copy(
@@ -124,7 +125,7 @@ class AuthViewModel(
 
                 }
 
-                is NetworkResponse.Success<*> -> {
+                is NetworkResponse.Success-> {
                     _event.send(AuthEvent.ShowToast("Sign up Success"))
                     _event.send(AuthEvent.NavToHome)
                 }
@@ -135,8 +136,6 @@ class AuthViewModel(
             }
         }
     }
-
-
 
     fun checkAuthStatus() {
         if (isUserLoggedInUseCase.invoke()) {

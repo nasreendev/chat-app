@@ -2,8 +2,7 @@ package com.test.baatcheet.core
 
 import androidx.compose.runtime.Composable
 
-@Composable
-fun GetValidationError(
+fun getValidationError(
     email: String,
     password: String,
 ): String? {
