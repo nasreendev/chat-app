@@ -23,6 +23,5 @@ class UserRepositoryImpl : UserRepository {
         } catch (e: Exception) {
             NetworkResponse.Failure(e.localizedMessage ?: "")
         }
-
     }
 }
