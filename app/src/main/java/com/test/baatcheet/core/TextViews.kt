@@ -15,6 +15,7 @@ fun TextView(
     fontSize: Int = 18,
     color: Color = R.color.black.getColor(),
     modifier: Modifier = Modifier,
+
 ) {
     Text(
         text = value,

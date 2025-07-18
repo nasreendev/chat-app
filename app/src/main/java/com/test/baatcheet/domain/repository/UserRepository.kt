@@ -5,4 +5,5 @@ import com.test.baatcheet.domain.model.UserModel
 
 interface UserRepository {
     suspend fun getAllUsers(): NetworkResponse<List<UserModel>>
+    suspend fun getLoggedInUser(): NetworkResponse<UserModel>
 }

@@ -3,7 +3,9 @@ package com.test.baatcheet.di
 import com.test.baatcheet.data.repository.AuthRepositoryImpl
 import com.test.baatcheet.data.repository.UserRepositoryImpl
 import com.test.baatcheet.data.usecases.GetAllUsersUseCase
+import com.test.baatcheet.data.usecases.GetLoggedInUserUseCase
 import com.test.baatcheet.data.usecases.IsUserLoggedInUseCase
+import com.test.baatcheet.data.usecases.SetDisplayNameUseCase
 import com.test.baatcheet.data.usecases.SignInUseCase
 import com.test.baatcheet.data.usecases.SignOutUseCase
 import com.test.baatcheet.data.usecases.SignUpUseCase
@@ -28,9 +30,9 @@ val appModule = module {
     singleOf(::IsUserLoggedInUseCase)
 
     singleOf(::SignUpUseCase)
-
+    singleOf(::SetDisplayNameUseCase)
     singleOf(::SignInUseCase)
-
+    singleOf(::GetLoggedInUserUseCase)
     singleOf(::SignOutUseCase)
     singleOf(::GetAllUsersUseCase)
     viewModelOf(::AuthViewModel)
