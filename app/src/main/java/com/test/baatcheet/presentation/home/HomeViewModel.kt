@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+
 data class HomeState(
     val users: NetworkResponse<List<UserModel>> = NetworkResponse.Idle,
     val loggedInUser: NetworkResponse<UserModel> = NetworkResponse.Idle,

@@ -42,7 +42,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
     popBackStack: () -> Unit,
     modifier: Modifier = Modifier,
-    navToChat: () -> Unit,
+    navToChat: (String, String) -> Unit,
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -98,7 +98,7 @@ fun HomeScreen(
                     items(response.data) { model ->
                         UserCard(
                             user = model, navToChat = {
-                                navToChat.invoke()
+                                navToChat.invoke(model.name,model.id)
                             })
                     }
                 }
