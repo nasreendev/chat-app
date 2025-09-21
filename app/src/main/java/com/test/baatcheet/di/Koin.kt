@@ -3,6 +3,8 @@ package com.test.baatcheet.di
 import com.test.baatcheet.data.repository.AuthRepositoryImpl
 import com.test.baatcheet.data.repository.ChatRepositoryImpl
 import com.test.baatcheet.data.repository.UserRepositoryImpl
+import com.test.baatcheet.data.usecases.AddFriendUseCase
+import com.test.baatcheet.data.usecases.GetAllFriendsUseCase
 import com.test.baatcheet.data.usecases.GetAllUsersUseCase
 import com.test.baatcheet.data.usecases.GetLoggedInUserUseCase
 import com.test.baatcheet.data.usecases.IsUserLoggedInUseCase
@@ -45,8 +47,9 @@ val appModule = module {
     singleOf(::SendMessageUseCase)
     singleOf(::ListenToMessagesUseCase)
     singleOf(::GetAllUsersUseCase)
+    singleOf(::GetAllFriendsUseCase)
+    singleOf(::AddFriendUseCase)
     viewModelOf(::AuthViewModel)
-
     viewModelOf(::HomeViewModel)
     viewModelOf(::ChatViewModel)
 

@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.test.baatcheet.presentation.add_friend.AddFriendScreen
 import com.test.baatcheet.presentation.auth.AuthScreen
 import com.test.baatcheet.presentation.chat.ChatScreen
 import com.test.baatcheet.presentation.home.HomeScreen
@@ -26,6 +27,9 @@ fun AppNavigation() {
                 }
             )
         }
+        composable<Routes.AddFriendScreen> {
+            AddFriendScreen()
+        }
         composable<Routes.MainScreen> {
             MainScreen(
                 popBackStack = {
@@ -33,13 +37,16 @@ fun AppNavigation() {
                 },
                 navToChat = { name, id ->
                     navController.navigate(Routes.ChatScreen(name, id))
+                },
+                navToAdd = {
+                    navController.navigate(Routes.AddFriendScreen)
                 }
             )
         }
         composable<Routes.ChatScreen> {
             val model = it.toRoute<Routes.ChatScreen>()
             ChatScreen(
-                name =model.name,
+                name = model.name,
                 id = model.id,
                 popBackStack = {
                     navController.popBackStack()
@@ -51,8 +58,11 @@ fun AppNavigation() {
                 popBackStack = {
                     navController.popBackStack()
                 },
-                navToChat = {name,id->
-                    navController.navigate(Routes.ChatScreen(name,id))
+//                navToChat = { name, id ->
+//                    navController.navigate(Routes.ChatScreen(name, id))
+//                },
+                navToAdd = {
+                    navController.navigate(Routes.AddFriendScreen)
                 }
             )
         }

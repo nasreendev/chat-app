@@ -10,7 +10,8 @@ fun BottomNavHost(
     modifier: Modifier = Modifier,
     selectedItems: Int,
     popBackStack: () -> Unit,
-    navToChat:(String, String)-> Unit
+    navToChat: (String, String) -> Unit,
+    navToAdd: () -> Unit,
 ) {
     when (selectedItems) {
         0 -> HomeScreen(
@@ -18,10 +19,12 @@ fun BottomNavHost(
                 popBackStack.invoke()
             },
             modifier = modifier,
-            navToChat = {name,id->
-                navToChat.invoke(name,id)
-            },
-
+//            navToChat = { name, id ->
+//                navToChat.invoke(name, id)
+//            },
+            navToAdd = {
+                navToAdd.invoke()
+            }
         )
 
         1 -> ProfileScreen()

@@ -42,7 +42,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
     popBackStack: () -> Unit,
     modifier: Modifier = Modifier,
-    navToChat: (String, String) -> Unit,
+    navToAdd: () -> Unit,
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -50,26 +50,38 @@ fun HomeScreen(
         topBar = {
             TopAppBar(
                 title = {
-                TextView(
-                    value = "BaatCheet", fontSize = 22, color = Color.White
+                    TextView(
+                        value = "BaatCheet", fontSize = 22, color = Color.White
+                    )
+                }, actions = {
+                    Image(
+                        painter = painterResource(R.drawable.ic_contacts),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                navToAdd.invoke()
+                            },
+                        contentScale = ContentScale.Crop,
+                        colorFilter = ColorFilter.tint(Color.White)
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.ic_logout),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                viewModel.signOut()
+                                popBackStack.invoke()
+                            },
+                        contentScale = ContentScale.Crop,
+                        colorFilter = ColorFilter.tint(Color.White)
+                    )
+                }, colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MainColor
                 )
-            }, actions = {
-                Image(
-                    painter = painterResource(R.drawable.ic_logout),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .padding(end = 16.dp)
-                        .clip(CircleShape)
-                        .clickable {
-                            viewModel.signOut()
-                            popBackStack.invoke()
-                        },
-                    contentScale = ContentScale.Crop,
-                    colorFilter = ColorFilter.tint(Color.White)
-                )
-            }, colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MainColor
-            )
             )
         }, containerColor = BgColor, modifier = modifier
     ) {
@@ -79,7 +91,7 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(it)
         ) {
-            when (val response = state.users) {
+            when (val response = state.friends) {
                 is NetworkResponse.Failure -> {
 
                 }
@@ -98,7 +110,7 @@ fun HomeScreen(
                     items(response.data) { model ->
                         UserCard(
                             user = model, navToChat = {
-                                navToChat.invoke(model.name,model.id)
+//                                navToChat.invoke(model.name, model.id)
                             })
                     }
                 }

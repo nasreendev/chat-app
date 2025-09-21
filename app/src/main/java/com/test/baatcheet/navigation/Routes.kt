@@ -12,14 +12,15 @@ sealed class Routes {
     data object AuthScreen : Routes()
 
     @Serializable
-    data object ProfileScreen : Routes()
-
-    @Serializable
     data class ChatScreen(val name: String,val id: String) : Routes()
-
 
     @Serializable
     data object MainScreen : Routes()
 
+    @Serializable
+    data object ProfileScreen : Routes()
+
+    @Serializable
+    data object AddFriendScreen : Routes()
 
 }

@@ -1,5 +1,6 @@
 package com.test.baatcheet.presentation.auth
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.baatcheet.data.network.NetworkResponse
@@ -122,7 +123,7 @@ class AuthViewModel(
             when (response) {
                 is NetworkResponse.Failure -> {
                     _event.send(AuthEvent.ShowToast("Sign up Failure"))
-
+                    Log.d("cvv", "signUp:${response.error} ")
                 }
 
                 is NetworkResponse.Success-> {

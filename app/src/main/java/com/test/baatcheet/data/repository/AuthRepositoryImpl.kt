@@ -15,6 +15,7 @@ class AuthRepositoryImpl : AuthRepository {
 
     private val auth = FirebaseAuth.getInstance()
     private val firestore = FirebaseFirestore.getInstance()
+
     override suspend fun signUp(
         email: String,
         password: String,

@@ -5,5 +5,7 @@ import com.test.baatcheet.domain.model.UserModel
 
 interface UserRepository {
     suspend fun getAllUsers(): NetworkResponse<List<UserModel>>
+    suspend fun getAllFriends(): NetworkResponse<List<UserModel>>
     suspend fun getLoggedInUser(): NetworkResponse<UserModel>
+    suspend fun addFriend(friendId: String): NetworkResponse<UserModel>
 }

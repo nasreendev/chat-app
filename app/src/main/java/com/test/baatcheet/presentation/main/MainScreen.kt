@@ -27,6 +27,7 @@ import com.test.baatcheet.ui.theme.MainColor
 fun MainScreen(
     popBackStack: () -> Unit,
     navToChat: (String,String) -> Unit,
+    navToAdd: () -> Unit,
 ) {
 
 
@@ -76,6 +77,9 @@ fun MainScreen(
             },
             navToChat = {name,id->
                 navToChat.invoke(name,id)
+            },
+            navToAdd = {
+                navToAdd.invoke()
             }
         )
     }
